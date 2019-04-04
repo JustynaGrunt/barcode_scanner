@@ -33,5 +33,11 @@ export class ProductsService {
     };
   }
 
+  deleteProduct(productId: string){
+    this.products = this.products.filter(product =>{
+      return product.id !== productId;
+    });
+  }
+  
   
 }

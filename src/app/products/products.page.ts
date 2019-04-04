@@ -13,7 +13,7 @@ export class ProductsPage implements OnInit {
   constructor(private productsService: ProductsService) { }
 
   ngOnInit() {
-    this.productsService.getAllProducts();
+    this.products = this.productsService.getAllProducts();
   }
 
 }

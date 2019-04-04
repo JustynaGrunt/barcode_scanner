@@ -19,6 +19,7 @@ export class ProductsService {
     ingredients: ['A', 'B', 'C']
     }
   ];
+  
   constructor() { }
 
   getAllProducts(){

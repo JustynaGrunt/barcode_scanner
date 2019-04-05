@@ -27,6 +27,8 @@ export class ProductDetailPage implements OnInit {
       if (!paramMap.has('productId')) {
 
         // redirect user
+        this.router.navigate(['/products']);
+        return;
       }
       // extract productId
       const productId = paramMap.get('productId');

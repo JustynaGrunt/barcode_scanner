@@ -1,10 +1,15 @@
-ion-content{
-    --background: url('../../assets/images/white_background.png') no-repeat center center fixed;
-    background-size: cover;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    text-align: center;
+
+.new-background-color{
+    --background: #76C3F9;
 }
+
+// ion-content{
+//     --background: url('../../assets/images/white_background.png') no-repeat center center fixed;
+//     background-size: cover;
+//     -webkit-background-size: cover;
+//     -moz-background-size: cover;
+//     text-align: center;
+// }
 img{
     margin-top: 30px;
     width: 200px;
@@ -28,8 +33,12 @@ button{
     width: 85%;
     height: 35px;
     color: #ffffff;
-    background-color: #50E1C2;
+    background-color: #76C3F8;
 }
 ion-input{
     text-align: center;
 }
+
+.toolbar-title {
+    color: #FFFFFF
+  }

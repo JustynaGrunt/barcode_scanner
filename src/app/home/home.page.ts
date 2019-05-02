@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
-
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { NavController } from '@ionic/angular';
-
 
 @Component({
   selector: 'app-home',
@@ -14,17 +12,19 @@ export class HomePage {
   num: string;
 
    // DI barcodeScanner
-   constructor(public navCtrl: NavController, 
+   constructor(public navCtrl: NavController,
     private barcodeScanner: BarcodeScanner) {
 
   }
   
   // new scan method
   scan() {
+    console.log('scan');
     this.barcodeScanner.scan().then(data => {
         // this is called when a barcode is found
-        this.num = data.text
-      });      
+        this.num = data.text;
+        this.navCtrl.navigateForward(`/products/${this.num}`);
+      });
   }
 
 }

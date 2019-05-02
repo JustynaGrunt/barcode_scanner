@@ -3,13 +3,44 @@
 
 /** Ionic CSS Variables **/
 :root {
+  ion-button {
+    --color: #FFFFFF;
+    --background: #76C3F9;
+  }
+  
+  .toolbar-title {
+    color: #FFFFFF
+  }
+
+  .toolbar-background {
+    background-color: #76C3F9;
+  }
+
+  .txt_Scan_Label{
+    color:#636C72;
+    text-align: center;
+    font-size: 13px;
+    font-weight: bold;
+  }
+
+  .txt_Labels{
+    font-size: 11px;
+    color:#636C72;
+  }
+
+
+  //Text Font
+  --ion-default-font: "Roboto", "Helvetica Neue", sans-serif;
+
+
   /** primary **/
-  --ion-color-primary: #3880ff;
+//  // --ion-color-primary: #3880ff;
+  --ion-color-primary: #76C3F8;
   --ion-color-primary-rgb: 56, 128, 255;
   --ion-color-primary-contrast: #ffffff;
   --ion-color-primary-contrast-rgb: 255, 255, 255;
-  --ion-color-primary-shade: #3171e0;
-  --ion-color-primary-tint: #4c8dff;
+  --ion-color-primary-shade: #76C3F8;
+  --ion-color-primary-tint: #76C3F8;
 
   /** secondary **/
   --ion-color-secondary: #0cd1e8;
@@ -20,7 +51,7 @@
   --ion-color-secondary-tint: #24d6ea;
 
   /** tertiary **/
-  --ion-color-tertiary: #7044ff;
+  --ion-color-tertiary: #76C3F8;
   --ion-color-tertiary-rgb: 112, 68, 255;
   --ion-color-tertiary-contrast: #ffffff;
   --ion-color-tertiary-contrast-rgb: 255, 255, 255;
@@ -77,5 +108,9 @@
 }
 
 $colors: (
-  roze: #ffbfbd
+  primary:    #76C3F8,
+  secondary:  #32db64,
+  danger:     #f53d3d,
+  light:      #f4f4f4,
+  dark:       #222
 );

@@ -4,6 +4,8 @@ import { ProductsService } from '../products.service';
 import { Product } from '../product.model';
 import { AlertController } from '@ionic/angular';
 
+
+
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.page.html',
@@ -35,6 +37,10 @@ export class ProductDetailPage implements OnInit {
 
       //use service to load product by id
       this.loadedProduct = this.productsService.getProduct(productId);
+
+
+      //Uncomment this line
+     // this.loadedProduct = this.productsService.getProduct(productId);
     });
   }
 

@@ -20,11 +20,14 @@ export class HomePage {
   // new scan method
   scan() {
     console.log('scan');
-    this.barcodeScanner.scan().then(data => {
-        // this is called when a barcode is found
-        this.num = data.text;
-        this.navCtrl.navigateForward(`/products/${this.num}`);
-      });
+      this.num = '3574661156392';
+      this.navCtrl.navigateForward(`/products/${this.num}`);
+
+    // this.barcodeScanner.scan().then(data => {
+    //     // this is called when a barcode is found
+    //     this.num = data.text;
+    //     this.navCtrl.navigateForward(`/products/${this.num}`);
+    //   });
   }
 
 }

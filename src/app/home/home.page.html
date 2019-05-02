@@ -5,17 +5,21 @@
 </ion-header>
 
 <ion-content class="bg-image">
-  <img src="assets/images/banner.png" alt="">
-  <ion-list>
-
-    <ion-item>
+    <ion-img width="80" height="80" src="assets/images/banner.png" id="ScanImage"></ion-img>
+    <!-- <img src="assets/images/banner.png" alt=""> -->
+    <!-- <ion-item>
       <ion-label fixed>Product</ion-label>
       <ion-input type="text" value="" [(ngModel)]="num"></ion-input>
+    </ion-item> -->
+    <ion-item>
+        <ion-label class="txtLabel">Scan product to analyse ingredients</ion-label>
     </ion-item>
-
+<!-- 
+    <ion-text class="txtLabel">
+        <h1>Scan product to analyse ingredients</h1>
+    </ion-text> -->
    
-      <ion-button expand="full" fill="solid" color="light" (click)="scan()"><ion-icon slot="start" name="qr-scanner"></ion-icon> Scan</ion-button>
+    <ion-button color="primary" expand="block" fill="solid" (click)="scan()"><ion-icon slot="start" name="qr-scanner"></ion-icon> Scan</ion-button>
   
-  </ion-list>
 
 </ion-content>

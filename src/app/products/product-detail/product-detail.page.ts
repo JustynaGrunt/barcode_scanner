@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProductsService } from '../products.service';
 import { Product } from '../product.model';
 import { AlertController } from '@ionic/angular';
-
+import { ProductService } from 'src/app/services/product.service';
 
 
 @Component({
@@ -12,11 +11,12 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./product-detail.page.scss'],
 })
 export class ProductDetailPage implements OnInit {
-  loadedProduct: Product;
+  //loadedProduct: Product;
+  loadedProduct: Product; //need to change type to Product
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private productsService: ProductsService,
+    private productsService: ProductService,
     private router: Router,
     private alertCtrl: AlertController
     ) { }
@@ -36,12 +36,25 @@ export class ProductDetailPage implements OnInit {
       const productId = paramMap.get('productId');
 
       //use service to load product by id
-      //this.loadedProduct = this.productsService.getProduct(productId);
 
+      this.getProduct(productId);
+
+      //this.loadedProduct = this.productsService.getProductById(productId);
 
       //Uncomment this line
      // this.loadedProduct = this.productsService.getProduct(productId);
     });
+
+    
+  }
+
+  getProduct(productId){
+    this.productsService.getProductById(productId)
+      .subscribe(result => {
+        this.loadedProduct = result;
+      }, error => {
+          console.log(error);
+      });
   }
 
   onDeleteProduct(){
@@ -56,8 +69,8 @@ export class ProductDetailPage implements OnInit {
       {
         text: 'Delete',
         handler: () => {
-          this.productsService.deleteProduct(this.loadedProduct.id);
-          this.router.navigate(['/products']);
+         // this.productsService.deleteProduct(this.loadedProduct.id);
+        //  this.router.navigate(['/products']);
         }
       }
     ]

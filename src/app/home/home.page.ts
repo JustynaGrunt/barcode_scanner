@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { NavController } from '@ionic/angular';
+import { Observable } from 'rxjs';
+import { Product } from '../products/product.model';
+import { ProductService } from '../services/product.service';
+import { ToastController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-home',
@@ -10,24 +15,49 @@ import { NavController } from '@ionic/angular';
 export class HomePage {
   // store the scanned result
   num: string;
+  products: any;
+  selectedProduct: any;
+  productFound: boolean = false;
 
    // DI barcodeScanner
    constructor(public navCtrl: NavController,
-    private barcodeScanner: BarcodeScanner) {
+    private barcodeScanner: BarcodeScanner, public productService: ProductService, public toastController: ToastController) {
 
+      this.productService.getProducts()
+        .subscribe(result => {
+          this.products = result;
+          console.log(this.products);
+        }, error => {
+            console.log(error);
+      });
   }
-  
+ 
   // new scan method
   scan() {
-    console.log('scan');
-      this.num = '3574661156392';
-      this.navCtrl.navigateForward(`/products/${this.num}`);
+    this.selectedProduct = {};
 
-    // this.barcodeScanner.scan().then(data => {
-    //     // this is called when a barcode is found
-    //     this.num = data.text;
-    //     this.navCtrl.navigateForward(`/products/${this.num}`);
-    //   });
+    this.barcodeScanner.scan().then(barcodeData => {
+
+        this.selectedProduct = this.products.find(product => product.barcodeId === barcodeData.text);
+
+        if( this.selectedProduct !== undefined){
+          this.productFound = true;
+          console.log(this.selectedProduct._id);
+          this.navCtrl.navigateForward(`/products/${this.selectedProduct._id}`);
+
+        } else {
+          this.productFound = false;
+          this.presentToast();
+        }
+      });
+  }
+
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: 'Product not found.',
+      duration: 2000
+    });
+    toast.present();
   }
 
 }

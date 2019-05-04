@@ -13,6 +13,7 @@
       <ion-select-option value="">All</ion-select-option>
       <ion-select-option value="productName">Product name</ion-select-option>
       <ion-select-option value="brand">Brand</ion-select-option>
+      <ion-select-option value="type">Type</ion-select-option>
     </ion-select>
     
   </ion-item>
@@ -22,14 +23,23 @@
       <app-product-item *ngFor="let product of products" [productItem]="product">
       </app-product-item>
   </ion-list> -->
-    <ion-list> 
-      <ion-item *ngFor="let product of products" [routerLink]="['/products', product.id]"  >
+    <ion-list padding> 
+      <ion-item *ngFor="let product of products" [routerLink]="['/products', product._id]"  >
         <ion-avatar slot="start">
-          <ion-img [src]="product.imageUrl"></ion-img>
+          <ion-img [src]="product.imageUrl" *ngIf="product.imageUrl != 'N/A'"></ion-img>
         </ion-avatar>
-        <ion-label>
+        <ion-label text-wrap>
           {{ product.title }}
         </ion-label>
+
+        <!-- add icon depending on product type -->
+        <ion-icon color="success" slot="end" *ngIf="product.type == 'Moisturiser'" name="leaf" ios="ios-leaf" md="md-leaf" ></ion-icon>
+        <ion-icon slot="warning" *ngIf="product.type == 'serum'" name="rose" ios="ios-rose" md="md-rose" ></ion-icon>
+        <ion-icon color="primary"  slot="end" *ngIf="product.type == 'Micellar water'" name="water" ios="ios-water" md="md-water" ></ion-icon>
+
       </ion-item> 
     </ion-list> 
+
+    <button ion-button (click)="GoHome()" >Home</button>
+
 </ion-content>

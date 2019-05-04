@@ -3,8 +3,7 @@ import { Product } from './product.model';
 // import { ProductsService } from './products.service';
 import { Observable } from 'rxjs';
 import { SearchType, ProductService } from '../services/product.service';
-
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -12,12 +11,12 @@ import { SearchType, ProductService } from '../services/product.service';
   styleUrls: ['./products.page.scss'],
 })
 export class ProductsPage implements OnInit {
-  products: any ;
+  products: any;
   searchTerm = '';
   type: SearchType = SearchType.all;
 
  // products: Product [];
-  constructor(private productsService: ProductService) { }
+  constructor(private productsService: ProductService,public router: Router) { }
 
   ngOnInit() {
     //this.products = this.productsService.getAllProducts();
@@ -37,5 +36,9 @@ export class ProductsPage implements OnInit {
       }, error => {
           console.log(error);
       });
+  }
+
+  GoHome(){
+    this.router.navigate(['/home']);
   }
 }

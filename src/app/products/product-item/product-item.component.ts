@@ -7,11 +7,15 @@ import { Product } from '../product.model';
   styleUrls: ['./product-item.component.scss'],
 })
 export class ProductItemComponent implements OnInit {
-  @Input() productItem: Product;
-
+ // @Input() productItem: Product;
+  
+  
+  //Uncommment this line below to api usage
+  @Input() productItem : Product;
 
   constructor() { }
 
   ngOnInit() {}
 
 }
+

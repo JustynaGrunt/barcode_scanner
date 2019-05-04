@@ -7,13 +7,14 @@ export enum SearchType {
   all = '',
   name = 'productName',
   brand = 'brand',
+  type = 'type'
 }
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-  url = 'http://localhost:8200';
+  url: string = 'http://localhost:3000/';
   // apiKEY = '2656666';
 
   constructor(private http: HttpClient) { }
@@ -35,4 +36,10 @@ export class ProductService {
   getProductDetails(productId){
     return this.http.get(`${this.url}?id=${productId}`);
   }
+
+  getProducts()
+  {
+    console.log("check check" );
+    return this.http.get(this.url + 'api/getProducts');
+    }
 }

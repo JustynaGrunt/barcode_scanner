@@ -36,7 +36,7 @@ export class ProductDetailPage implements OnInit {
       const productId = paramMap.get('productId');
 
       //use service to load product by id
-      this.loadedProduct = this.productsService.getProduct(productId);
+      //this.loadedProduct = this.productsService.getProduct(productId);
 
 
       //Uncomment this line

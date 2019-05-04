@@ -5,13 +5,14 @@ import { Observable } from 'rxjs';
 import { SearchType, ProductService } from '../services/product.service';
 
 
+
 @Component({
   selector: 'app-products',
   templateUrl: './products.page.html',
   styleUrls: ['./products.page.scss'],
 })
 export class ProductsPage implements OnInit {
-  products: Observable<any>;
+  products: any ;
   searchTerm = '';
   type: SearchType = SearchType.all;
 
@@ -20,23 +21,21 @@ export class ProductsPage implements OnInit {
 
   ngOnInit() {
     //this.products = this.productsService.getAllProducts();
-    //this.getProducts();
+      this.getProducts();
+
   }
 
   searchChanged(){
     //call searchData service
-    this.products = this.productsService.searchData(this.searchTerm, this.type);
+    //this.products = this.productsService.searchData(this.searchTerm, this.type);
   }
 
-  // getProducts(){
-  //   this.productsService.getAllProducts()
-  //   .subscribe(res => {
-  //     this.products = res;
-  //     console.log( this.products);
-  //   }, error => {
-  //     console.log(error);
-  //   });
-  // }
-
-
+    getProducts(){
+      this.productsService.getProducts()
+      .subscribe(result => {
+        this.products = result;
+      }, error => {
+          console.log(error);
+      });
+  }
 }

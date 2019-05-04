@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Product } from '../products/product.model';
+
 
 export enum SearchType {
   all = '',
@@ -14,7 +16,8 @@ export enum SearchType {
   providedIn: 'root'
 })
 export class ProductService {
-  url: string = 'http://localhost:3000/';
+  url: string = 'http://192.168.0.6:3000'; // use this for desktop browser --> 'http://localhost:3000';
+ 
   // apiKEY = '2656666';
 
   constructor(private http: HttpClient) { }
@@ -33,13 +36,14 @@ export class ProductService {
     );
   }
 
-  getProductDetails(productId){
-    return this.http.get(`${this.url}?id=${productId}`);
+  getProductById(id: string){
+    console.log(id);
+    return this.http.get<Product>(this.url + '/api/products' + '/' + id);
   }
 
   getProducts()
   {
-    console.log("check check" );
-    return this.http.get(this.url + 'api/getProducts');
+    console.log("test service" );
+    return this.http.get(this.url + '/api/products');
     }
 }

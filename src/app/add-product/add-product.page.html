@@ -1,0 +1,24 @@
+<ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/products"></ion-back-button>
+      </ion-buttons>
+      <ion-title>Add Product</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content padding class="template">
+    <form (ngSubmit)="onSubmit()">
+        <ion-item>
+          <ion-label>Title</ion-label>
+          <ion-input type="text" [(ngModel)]="product.title" name="title"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Brand</ion-label>
+          <ion-textarea [(ngModel)]="product.brand" name="brand"></ion-textarea>
+        </ion-item>
+        <ion-button expand="full" color="primary"  type="submit" block>Save</ion-button >
+      </form>
+
+
+</ion-content>

@@ -16,11 +16,21 @@
     background-color: #76C3F9;
   }
 
+  ion-footer {
+    --color: #FFFFFF;
+    --background: #76C3F9;
+  }
+
   .txt_Scan_Label{
     color:#636C72;
     text-align: center;
     font-size: 13px;
     font-weight: bold;
+  }
+
+  .txt_Title{
+    color:#636C72;
+    font-size: 16px;
   }
 
   .txt_Labels{

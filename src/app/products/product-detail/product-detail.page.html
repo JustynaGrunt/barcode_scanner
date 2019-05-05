@@ -4,8 +4,9 @@
       <ion-back-button defaultHref="/products"></ion-back-button>
     </ion-buttons>
 
-    <ion-title>{{ loadedProduct.title }}</ion-title>
-    
+    <!-- <ion-title>{{ loadedProduct.title }}</ion-title> -->    
+    <ion-title>Product Details</ion-title>
+
     <ion-buttons slot="primary">
       <ion-button (click)="onDeleteProduct()">
           <ion-icon name="trash" slot="icon-only"></ion-icon>
@@ -18,10 +19,10 @@
 <ion-content>
   <ion-grid no-padding>
     <ion-row>
-      <ion-col no-padding>
+      <ion-col no-padding padding-top size="5">
           <ion-img [src]="loadedProduct.imageUrl"></ion-img>
       </ion-col>
-      <ion-col>
+      <ion-col size="7">
         <ion-row>
               <ion-text class="txt_Labels">
                   <h5>{{ loadedProduct.title }}</h5>
@@ -36,15 +37,15 @@
         <ion-row>
               <rating [(rating)]="rating" ></rating>      
         </ion-row>
-        <ion-row>
+        <ion-row margin-top>
           <ion-col>
-              <button ion-button class="btn_Like" (click)="Like" >  
+              <button padding ion-button class="btn_Like" (click)="Like" >  
                 <ion-icon name="heart" slot="start"></ion-icon>
                 Like</button>
 
           </ion-col>
           <ion-col>
-              <button ion-button class="btn_Save" (click)="Save" > 
+              <button padding ion-button class="btn_Save" (click)="Save" > 
                 <ion-icon name="add" slot="start"></ion-icon> Save</button>
 
           </ion-col>
@@ -65,3 +66,9 @@
     </ion-row>
   </ion-grid>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar color="primary">
+    <ion-title text-center [routerLink]="['/home']">Home</ion-title>
+  </ion-toolbar>
+</ion-footer>

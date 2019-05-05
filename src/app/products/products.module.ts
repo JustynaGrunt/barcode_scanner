@@ -8,6 +8,12 @@ import { IonicModule } from '@ionic/angular';
 import { ProductsPage } from './products.page';
 import { ProductItemComponent } from './product-item/product-item.component';
 
+//For product filtering
+import { ReactiveFormsModule } from "@angular/forms";
+import { SearchPipe } from '../search.pipe';
+import { SortPipe } from '../sort.pipe';
+
+
 const routes: Routes = [
   {
     path: '',
@@ -20,8 +26,9 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
+    ReactiveFormsModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [ProductsPage, ProductItemComponent]
+  declarations: [ProductsPage, ProductItemComponent, SearchPipe, SortPipe]
 })
 export class ProductsPageModule {}

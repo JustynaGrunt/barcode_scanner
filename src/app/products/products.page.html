@@ -1,22 +1,41 @@
-<ion-header>
-  <ion-toolbar color="primary">
-    <ion-title>Products</ion-title>
-  </ion-toolbar>
+<ion-header no-border>
+    <ion-toolbar >
+      <ion-title  class="txt_Title">Product List</ion-title>
+    </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  <ion-searchbar [(ngModel)]="searchTerm" (ionChange)="searchChanged($event)"></ion-searchbar>
+<!-- <ion-header>
+  <ion-toolbar color="primary">
 
-  <ion-item>
-    <ion-label>Select search type</ion-label>
-    <ion-select [(ngModel)]="type" (ionChange)="searchChanged($event)">
-      <ion-select-option value="">All</ion-select-option>
-      <ion-select-option value="productName">Product name</ion-select-option>
-      <ion-select-option value="brand">Brand</ion-select-option>
-      <ion-select-option value="type">Type</ion-select-option>
-    </ion-select>
-    
-  </ion-item>
+    <ion-title *ngIf="!isSearchOpened" >
+      Product List
+    </ion-title>
+    <ion-searchbar color="light" *ngIf="isSearchOpened" showCancelButton="true" (ionCancel)="isSearchOpened=false" [(ngModel)]="terms"></ion-searchbar>
+    <ion-buttons end>
+      <ion-button icon-only *ngIf="!isSearchOpened" (click)="isSearchOpened=true" >
+        <ion-icon name="search" md="md-search" ios="ios-search"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content padding>
+  <!-- <ion-searchbar color="light" [(ngModel)]="terms"></ion-searchbar> -->
+  <!-- <ion-button type="button" (click)="sort()" expand="full">Sort</ion-button> -->
+
+  <div *ngIf="searching" class="spinner-container">
+    <ion-spinner></ion-spinner>
+  </div>
+    <!-- <ion-item>
+      <ion-label>Select search type</ion-label>
+      <ion-select [(ngModel)]="type" (ionChange)="searchChanged($event)">
+        <ion-select-option value="">All</ion-select-option>
+        <ion-select-option value="title">Product name</ion-select-option>
+        <ion-select-option value="brand">Brand</ion-select-option>
+        <ion-select-option value="type">Type</ion-select-option>
+      </ion-select>
+ 
+  </ion-item> -->
 
 
   <!-- <ion-list>
@@ -24,7 +43,7 @@
       </app-product-item>
   </ion-list> -->
     <ion-list padding> 
-      <ion-item *ngFor="let product of products" [routerLink]="['/products', product._id]"  >
+      <ion-item *ngFor="let product of products | search : terms | sort: {property: column, order: order}" [routerLink]="['/products', product._id]"  >
         <ion-avatar slot="start">
           <ion-img [src]="product.imageUrl" *ngIf="product.imageUrl != 'N/A'"></ion-img>
         </ion-avatar>
@@ -40,6 +59,25 @@
       </ion-item> 
     </ion-list> 
 
-    <button ion-button (click)="GoHome()" >Home</button>
+    <!-- <button ion-button (click)="GoHome()" >Home</button> -->
 
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar color="primary">
+    <!-- <button ion-button no-margin full large (click)="GoHome()">Home</button> -->
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+            <ion-button expand="full" (click)="AddProduct()">Add</ion-button>
+        </ion-col>
+        <ion-col>
+            <ion-button expand="full" (click)="GoHome()">Scan</ion-button>
+
+          </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <!-- <ion-title text-center [routerLink]="['/home']">Home</ion-title> -->
+  </ion-toolbar>
+</ion-footer>

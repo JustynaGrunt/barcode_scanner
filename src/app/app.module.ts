@@ -13,12 +13,14 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 
 //for http requesrs
 import {HttpClientModule } from '@angular/common/http';
+import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [
-    BrowserModule, IonicModule.forRoot(), AppRoutingModule, FormsModule, HttpClientModule
+    BrowserModule, IonicModule.forRoot(), AppRoutingModule, FormsModule, HttpClientModule,IonicStorageModule.forRoot()
+
   ],
   providers: [
     StatusBar,

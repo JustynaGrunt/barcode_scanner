@@ -11,31 +11,50 @@ import { Router } from '@angular/router';
   styleUrls: ['./products.page.scss'],
 })
 export class ProductsPage implements OnInit {
-  products: any;
-  searchTerm = '';
-  type: SearchType = SearchType.all;
+  //products: any = [];
+  products: Product[];
+  errorMessage: string;
+
+  public isSearchOpened = false;
+
+  descending: boolean = false;
+  order: number;
+  column: string = 'name';
 
  // products: Product [];
   constructor(private productsService: ProductService,public router: Router) { }
 
   ngOnInit() {
-    //this.products = this.productsService.getAllProducts();
       this.getProducts();
-
   }
 
-  searchChanged(){
-    //call searchData service
-    //this.products = this.productsService.searchData(this.searchTerm, this.type);
+  sort(){
+    this.descending = !this.descending;
+    this.order = this.descending ? 1 : -1;
   }
 
-    getProducts(){
+  getAllProducts(){
+    this.productsService.getAllProducts()
+    .subscribe(products => this.products = products,
+      error => this.errorMessage = <any>error);
+  }
+  onSearch(event){
+    console.log(event.target.value);
+  }
+
+  getProducts(){
       this.productsService.getProducts()
       .subscribe(result => {
         this.products = result;
+        console.log(this.products);
       }, error => {
+          this.errorMessage = <any>error;
           console.log(error);
-      });
+    });
+  }
+
+  AddProduct():void{
+    this.router.navigate(['/add-product']);
   }
 
   GoHome(){

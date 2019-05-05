@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from './services/auth.guard';
+
 
 //Setting up all routes
 const routes: Routes = [
-  { path: '', redirectTo: 'products', pathMatch: 'full' },
+  { path: '', loadChildren: './tabs/tabs.module#TabsPageModule' },
+  //{ path: '', redirectTo: 'products', pathMatch: 'full' },
   { path: 'home', loadChildren: './home/home.module#HomePageModule' },
-  { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
+  // { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
   { path: 'products',
     children: [
       {
@@ -18,6 +21,11 @@ const routes: Routes = [
       }
     ]
   },
+  { path: 'add-product', loadChildren: './add-product/add-product.module#AddProductPageModule', canActivate: [AuthGuard] },
+  { path: 'login', loadChildren: './auth/login/login.module#LoginPageModule' },
+  { path: 'register', loadChildren: './auth/register/register.module#RegisterPageModule' },
+
+
 ];
 
 @NgModule({

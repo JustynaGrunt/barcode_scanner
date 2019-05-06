@@ -63,7 +63,8 @@ export class ProductService {
   }
 
   addProduct(product: Product){
-    return this.http.post(this.baseUrl + '/api/products', product);
+    console.log(product);
+    //return this.http.post(this.baseUrl + '/api/products', product);
   }
 
   updateProduct(product: Product){
@@ -71,6 +72,7 @@ export class ProductService {
   }
 
   deleteProduct(id: string){
+    console.log(this.baseUrl + '/api/products' + '/' + id);
     return this.http.delete(this.baseUrl + '/api/products' + '/' + id);
   }
 }

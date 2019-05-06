@@ -14,9 +14,17 @@ export class ProductDetailPage implements OnInit {
   //loadedProduct: Product;
   loadedProduct: Product; //need to change type to Product
 
+  //EWG
+  value: any;
+  valuePercentage: any;
+
+  //CIR
+  valueCIR: any;
+  valuePerctCIR: any;
+
   constructor(
     private activatedRoute: ActivatedRoute,
-    private productsService: ProductService,
+    private productService: ProductService,
     private router: Router,
     private alertCtrl: AlertController
     ) { }
@@ -39,6 +47,11 @@ export class ProductDetailPage implements OnInit {
 
       this.getProduct(productId);
 
+      this.value = 0.35;
+      this.valuePercentage = (this.value * 100) + ' %';
+
+      this.valueCIR = 0.45;
+      this.valuePerctCIR = (this.valueCIR * 100) + ' %';
       //this.loadedProduct = this.productsService.getProductById(productId);
 
       //Uncomment this line
@@ -49,15 +62,16 @@ export class ProductDetailPage implements OnInit {
   }
 
   getProduct(productId){
-    this.productsService.getProductById(productId)
+    this.productService.getProductById(productId)
       .subscribe(result => {
         this.loadedProduct = result;
+        console.log(this.loadedProduct);
       }, error => {
           console.log(error);
       });
   }
 
-  onDeleteProduct(){
+  onDeleteProduct(productId){
     //Show alert message before delete
     this.alertCtrl.create({
       header: 'Are you sure?',
@@ -69,8 +83,8 @@ export class ProductDetailPage implements OnInit {
       {
         text: 'Delete',
         handler: () => {
-         // this.productsService.deleteProduct(this.loadedProduct.id);
-        //  this.router.navigate(['/products']);
+            this.productService.deleteProduct(productId);
+            this.router.navigate(['/products']);
         }
       }
     ]

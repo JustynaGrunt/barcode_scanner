@@ -8,15 +8,65 @@
   </ion-header>
 
 <ion-content padding class="template">
-    <form (ngSubmit)="onSubmit()">
+    <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
         <ion-item>
           <ion-label>Title</ion-label>
-          <ion-input type="text" [(ngModel)]="product.title" name="title"></ion-input>
+          <ion-input type="text" formControlName="title"  placeholder="Title" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.title.errors }"></ion-input>
+          <div *ngIf="submitted && f.title.errors">
+              <div *ngIf="f.title.errors.required">Title is required</div>
+            </div>
         </ion-item>
         <ion-item>
           <ion-label>Brand</ion-label>
-          <ion-textarea [(ngModel)]="product.brand" name="brand"></ion-textarea>
+          <ion-input type="text" formControlName="brand"  placeholder="brand" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.brand.errors }"></ion-input>
+          <div *ngIf="submitted && f.brand.errors">
+              <div *ngIf="f.brand.errors.required">Title is required</div>
+          </div>        
         </ion-item>
+
+        <ion-item>
+            <ion-label>Type</ion-label>
+            <ion-input type="text" formControlName="type"  placeholder="type" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.type.errors }"></ion-input>
+            <div *ngIf="submitted && f.type.errors">
+                <div *ngIf="f.type.errors.required">Title is required</div>
+            </div>        
+        </ion-item>
+
+        <ion-item>
+            <ion-label>barcodeId</ion-label>
+            <ion-input type="text" formControlName="barcodeId"  placeholder="barcodeId" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.barcodeId.errors }"></ion-input>
+            <div *ngIf="submitted && f.barcodeId.errors">
+                <div *ngIf="f.barcodeId.errors.required">Title is required</div>
+            </div>        
+        </ion-item>
+          
+        <ion-item>
+            <ion-label>ingredients</ion-label>
+            <ion-input type="text" formControlName="ingredients"  placeholder="ingredients" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.ingredients.errors }"></ion-input>
+            <div *ngIf="submitted && f.ingredients.errors">
+                <div *ngIf="f.ingredients.errors.required">Title is required</div>
+            </div>        
+        </ion-item>
+
+        <ion-item-group>
+            <ion-item-divider color="light">Image</ion-item-divider>
+            <ion-item>
+              <ion-button color="danger" expand="full" (click)="takePicture()">Take Image</ion-button>
+            </ion-item>
+
+            <ion-item>
+                <ion-button color="success" expand="full" (click)="selectImage()">Select Image From Gallery</ion-button>
+            </ion-item>
+
+            <ion-item>
+               <img [src]="imageUrl">
+               <input type="text" name="imageUrl" formControlName="imageUrl" [(ngModel)]="imageUrl">
+            </ion-item>
+         </ion-item-group>
+
+
+
+
         <ion-button expand="full" color="primary"  type="submit" block>Save</ion-button >
       </form>
 

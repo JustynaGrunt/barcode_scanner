@@ -10,3 +10,87 @@
     font-weight: bold;
 
 }
+
+.line_Break{
+    border-bottom: #dee2e6 solid 1px;
+}
+
+.bg_safe{
+ background-color: #98E0DD;
+ box-sizing: border-box;
+ width: 20px;
+height: 20px;
+display: inline-block;
+margin-right: 10px;
+}
+.bg_moderate{
+ background-color: #F3AE75;
+ box-sizing: border-box;
+ width: 20px;
+height: 20px;
+display: inline-block;
+margin-right: 10px;
+
+}
+
+.bg_hazard{
+    background-color: #F18283;
+    box-sizing: border-box;
+    width: 20px;
+   height: 20px;
+   display: inline-block;
+   margin-right: 10px;
+
+   }
+
+.bg_unknown{
+    background-color: #B8B7B7;
+    box-sizing: border-box;
+    width: 20px;
+   height: 20px;
+   display: inline-block;
+   margin-right: 10px;
+}
+
+.bg_safe_Qua{
+    background-color: #9DACFF;
+    box-sizing: border-box;
+    width: 20px;
+   height: 20px;
+   display: inline-block;
+   margin-right: 10px;
+
+}
+   
+.progress-outer {
+    width: 96%;
+    margin: 10px 2%;
+    padding: 3px;
+    text-align: center;
+    background-color: #f4f4f4;
+    border: 1px solid #dcdcdc;
+    color: #fff;
+    border-radius: 20px;
+}
+
+.progress-inner {
+    min-width: 15%;
+    width: 90%;
+    white-space: nowrap;
+    overflow: hidden;
+    padding: 5px;
+    border-radius: 20px;
+    background-color: var(--ion-color-primary);
+}
+
+.progress_Success{
+    --progress-background : #98E0DD;
+}
+
+.progress_Moderate{
+    --progress-background : #F3AE75;
+}
+
+.progress_Hazard{
+    --progress-background : #F18283;
+}

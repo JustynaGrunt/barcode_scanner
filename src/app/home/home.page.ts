@@ -23,6 +23,7 @@ export class HomePage {
    constructor(public navCtrl: NavController,
     private barcodeScanner: BarcodeScanner, public productService: ProductService, public toastController: ToastController) {
 
+      //CHEck, probably this is not necessary
       this.productService.getProducts()
         .subscribe(result => {
           this.products = result;

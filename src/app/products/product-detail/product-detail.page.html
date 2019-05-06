@@ -19,16 +19,15 @@
 <ion-content>
   <ion-grid no-padding>
     <ion-row>
-      <ion-col no-padding padding-top size="5">
+      <ion-col padding-top size="5">
           <ion-img [src]="loadedProduct.imageUrl"></ion-img>
       </ion-col>
       <ion-col size="7">
         <ion-row>
               <ion-text class="txt_Labels">
-                  <h5>{{ loadedProduct.barcodeId }}</h5>
-
                   <h5>{{ loadedProduct.title }}</h5>
                   <p>{{ loadedProduct.brand }}</p>
+                  <p>{{ loadedProduct.barcodeId }}</p>
               </ion-text>
         </ion-row>
         <ion-row>
@@ -55,17 +54,31 @@
 
         </ion-col>
     </ion-row>
+    <!--Product Details-->
+    <ion-row class="padding_left">
+      <ion-col>
+          <ion-text class="txt_Labels_Bold">
+              <h5>Product Details</h5>
+          </ion-text>
+      </ion-col>
+    </ion-row>
+    <ion-row class="padding_left">
+        <ion-col>
+            <ion-text class="txt_Labels_Bold">
+                <p>{{ loadedProduct.details }}</p>
+            </ion-text>
+        </ion-col>
+      </ion-row>
 
-    <!--Product Overview-->
     <!--EWG-->
-    <ion-row padding margin-top>
+    <ion-row padding>
       <ion-col>
            <ion-text class="txt_Labels_Bold">
             <p>Product Ingredient Safety Breakdown (EWG Rating)</p>
         </ion-text>
       </ion-col>
     </ion-row>
-    <ion-row>
+    <ion-row class="padding_left">
       <ion-col size=4>
           <div class="bg_safe"></div><span class="txt_Labels">Low Risk</span>
       </ion-col>
@@ -78,28 +91,28 @@
           <div class="bg_hazard"></div><span class="txt_Labels">High Risk</span>
       </ion-col>
     </ion-row>
-    <ion-row>
+    <ion-row class="padding_left">
         <ion-col size=4>
             <div class="bg_unknown"></div><span class="txt_Labels">Unknown </span>
         </ion-col>
     </ion-row>
-    <ion-row>
+    <ion-row class="padding_left">
       <ion-col>
           <ion-text class="txt_Labels_Bold">
-              <p text-center>{{valuePercentage}}</p>
+              <p text-center>{{loadedProduct.valueEWG_percent}}</p>
           </ion-text>
       </ion-col>
     </ion-row>
-    <ion-row>
+    <ion-row class="padding_left padding_right">
       <ion-col>
-          <div *ngIf="0.4 >= value ">
-              <ion-progress-bar value="{{value}}" class="progress_Hazard"></ion-progress-bar>
+          <div *ngIf="0.4 >= loadedProduct.valueEWG ">
+              <ion-progress-bar value="{{loadedProduct.valueEWG}}" class="progress_Hazard"></ion-progress-bar>
           </div>
-          <div *ngIf="value > 0.4 && 0.7 > value">
-              <ion-progress-bar value="{{value}}" class="progress_Moderate"></ion-progress-bar>
+          <div *ngIf="loadedProduct.valueEWG > 0.4 && 0.7 > loadedProduct.valueEWG">
+              <ion-progress-bar value="{{loadedProduct.valueEWG}}" class="progress_Moderate"></ion-progress-bar>
           </div>
-          <div *ngIf="value >= 0.7">
-              <ion-progress-bar value="{{value}}" class="progress_Success"></ion-progress-bar>
+          <div *ngIf="loadedProduct.valueEWG >= 0.7">
+              <ion-progress-bar value="{{loadedProduct.valueEWG}}" class="progress_Success"></ion-progress-bar>
           </div>
       </ion-col>
     </ion-row>
@@ -116,7 +129,7 @@
         </ion-text>
       </ion-col>     
     </ion-row>
-    <ion-row>
+    <ion-row class="padding_left">
         <ion-col>
             <div class="bg_safe"></div><span class="txt_Labels">A - Safe as Used</span>
         </ion-col>
@@ -125,7 +138,7 @@
             <div class="bg_safe_Qua"></div><span class="txt_Labels">B - Safe with Qualifications</span>
         </ion-col>
       </ion-row>
-      <ion-row>
+      <ion-row class="padding_left">
           <ion-col>
               <div class="bg_hazard"></div><span class="txt_Labels">C - Unsafe</span>
           </ion-col>
@@ -133,30 +146,30 @@
               <div class="bg_unknown"></div><span class="txt_Labels">Unknown </span>
           </ion-col>
       </ion-row>
-      <ion-row>
+      <ion-row class="padding_left">
           <ion-col>
               <ion-text class="txt_Labels_Bold">
-                  <p text-center>{{valuePerctCIR}}</p>
+                  <p text-center>{{loadedProduct.valueCIR_percent}}</p>
               </ion-text>
           </ion-col>
         </ion-row>
-        <ion-row>
+        <ion-row class="padding_left padding_right">
           <ion-col>
-              <div *ngIf="0.4 >= valueCIR ">
-                  <ion-progress-bar value="{{valueCIR}}" class="progress_Hazard"></ion-progress-bar>
+              <div *ngIf="0.4 >= loadedProduct.valueCIR ">
+                  <ion-progress-bar value="{{loadedProduct.valueCIR}}" class="progress_Hazard"></ion-progress-bar>
               </div>
-              <div *ngIf="valueCIR > 0.4 && 0.7 > valueCIR">
-                  <ion-progress-bar value="{{valueCIR}}" class="progress_Moderate"></ion-progress-bar>
+              <div *ngIf="loadedProduct.valueCIR > 0.4 && 0.7 > loadedProduct.valueCIR">
+                  <ion-progress-bar value="{{loadedProduct.valueCIR}}" class="progress_Moderate"></ion-progress-bar>
               </div>
-              <div *ngIf="valueCIR >= 0.7">
-                  <ion-progress-bar value="{{valueCIR}}" class="progress_Success"></ion-progress-bar>
+              <div *ngIf="loadedProduct.valueCIR >= 0.7">
+                  <ion-progress-bar value="{{loadedProduct.valueCIR}}" class="progress_Success"></ion-progress-bar>
               </div>
           </ion-col>
         </ion-row>
 
 
     <!--Ingredient List-->
-    <ion-row margin-top>
+    <ion-row margin-top class="padding_left padding_right">
       <ion-col>
           <ion-row>
               <ion-col size="2">

@@ -57,7 +57,4 @@ export class ProductsPage implements OnInit {
     this.router.navigate(['/add-product']);
   }
 
-  GoHome(){
-    this.router.navigate(['/home']);
-  }
 }

@@ -3,12 +3,13 @@
       <ion-buttons slot="start">
         <ion-back-button defaultHref="/products"></ion-back-button>
       </ion-buttons>
-      <ion-title>Add Product</ion-title>
     </ion-toolbar>
   </ion-header>
 
 <ion-content padding class="template">
-    <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+    <h4>Add Product</h4>
+
+    <form padding [formGroup]="addForm" (ngSubmit)="onSubmit()">
         <ion-item>
           <ion-label>Title</ion-label>
           <ion-input type="text" formControlName="title"  placeholder="Title" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.title.errors }"></ion-input>
@@ -48,19 +49,24 @@
             </div>        
         </ion-item>
 
+
+        <ion-button margin-top class="takePicture_img" expand="full" (click)="takePicture()">Take Image</ion-button>
+
+        <ion-button margin-top  color="light" expand="full" (click)="selectImage()">Select Image From Gallery</ion-button>
+
         <ion-item-group>
-            <ion-item-divider color="light">Image</ion-item-divider>
+            <!-- <ion-item-divider color="light">Image</ion-item-divider>
             <ion-item>
               <ion-button color="danger" expand="full" (click)="takePicture()">Take Image</ion-button>
             </ion-item>
 
             <ion-item>
                 <ion-button color="success" expand="full" (click)="selectImage()">Select Image From Gallery</ion-button>
-            </ion-item>
+            </ion-item> -->
 
             <ion-item>
                <img [src]="imageUrl">
-               <input type="text" name="imageUrl" formControlName="imageUrl" [(ngModel)]="imageUrl">
+               <ion-input type="text" name="imageUrl" formControlName="imageUrl" [(ngModel)]="imageUrl"></ion-input>
             </ion-item>
          </ion-item-group>
 

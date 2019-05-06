@@ -28,4 +28,9 @@ export class TabsPage implements OnInit {
     this.router.navigateByUrl( 'tabs/home' );
   }
 
+  scan(){
+    this.router.navigateByUrl( 'tabs/home' );
+
+  }
+
 }

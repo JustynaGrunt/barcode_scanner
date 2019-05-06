@@ -64,7 +64,7 @@ export class ProductService {
 
   addProduct(product: Product){
     console.log(product);
-    //return this.http.post(this.baseUrl + '/api/products', product);
+    return this.http.post(this.baseUrl + '/api/products', product);
   }
 
   updateProduct(product: Product){

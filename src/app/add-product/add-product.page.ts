@@ -40,8 +40,8 @@ export class AddProductPage implements OnInit{
       barcodeId: ['', Validators.required],
       title: ['', Validators.required],
       brand: ['', Validators.required],
-      type: ['', Validators.required],
-      ingredients: ['', Validators.required]
+      type: ['', Validators.required]
+      // ingredients: ['', Validators.required]
     });
 
   }
@@ -50,11 +50,11 @@ export class AddProductPage implements OnInit{
     this.submitted = true;
 
     if(this.addForm.valid){
-      this.productService.addProduct(this.addForm.value);
-      // .subscribe( data => {
-      //   console.log(data);
-      //   this.router.navigate(['']);
-      //});
+      this.productService.addProduct(this.addForm.value)
+      .subscribe( data => {
+        console.log(data);
+        this.router.navigate(['']);
+      });
     }
   }
 
